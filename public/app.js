@@ -4,7 +4,8 @@
  */
 
 // Configuration
-const API_BASE_URL = window.location.origin;
+// const API_BASE_URL = window.location.origin;
+const API_BASE_URL = 'https://final-project1-h4bsege9anhacmfw.westus3-01.azurewebsites.net/';
 const REFRESH_INTERVAL = 30000; // 30 seconds
 
 // Global state
@@ -62,20 +63,20 @@ async function updateDashboard() {
  */
 function updateLocationCards(locations) {
     locations.forEach(location => {
-        const locationKey = getLocationKey(location.location);
+        const locationKey = getLocationKey(location.ConnectionDeviceId);
 
         // Update metrics
         document.getElementById(`ice-${locationKey}`).textContent =
-            location.avgIceThickness.toFixed(1);
+            location.AvgIceThickness.toFixed(1);
         document.getElementById(`temp-${locationKey}`).textContent =
-            location.avgSurfaceTemperature.toFixed(1);
+            location.AvgSurfaceTemperature.toFixed(1);
         document.getElementById(`snow-${locationKey}`).textContent =
-            location.maxSnowAccumulation.toFixed(1);
+            location.MaxSnowAccumulation.toFixed(1);
 
         // Update safety status
         const statusBadge = document.getElementById(`status-${locationKey}`);
         statusBadge.textContent = location.safetyStatus;
-        statusBadge.className = `safety-badge ${location.safetyStatus.toLowerCase()}`;
+        statusBadge.className = `safety-badge ${location.SafetyStatus.toLowerCase()}`;
     });
 }
 
@@ -127,7 +128,7 @@ async function updateCharts() {
         // Prepare chart data
         const iceDatasets = historicalData.map(({ location, data }) => ({
             label: location,
-            data: data.map(d => d.avgIceThickness),
+            data: data.map(d => d.AvgIceThickness),
             borderColor: colors[location],
             backgroundColor: colors[location] + '33',
             tension: 0.4,
@@ -136,7 +137,7 @@ async function updateCharts() {
 
         const tempDatasets = historicalData.map(({ location, data }) => ({
             label: location,
-            data: data.map(d => d.avgSurfaceTemperature),
+            data: data.map(d => d.AvgSurfaceTemperature),
             borderColor: colors[location],
             backgroundColor: colors[location] + '33',
             tension: 0.4,
@@ -145,7 +146,7 @@ async function updateCharts() {
 
         // Get time labels from first location's data
         const labels = historicalData[0].data.map(d =>
-            new Date(d.windowEndTime).toLocaleTimeString('en-CA', {
+            new Date(d.EventTime).toLocaleTimeString('en-CA', {
                 hour: '2-digit',
                 minute: '2-digit'
             })
