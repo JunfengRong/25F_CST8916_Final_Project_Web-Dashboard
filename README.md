@@ -1,6 +1,5 @@
 
 1. **Overview**
-   - Dashboard features 
    - It is a web dashboard that visualizes the real-time data from the Rideau Canal Skateway IoT sensors.
    - Technologies used (Node.js, Express, Chart.js)
 2. **Prerequisites**
@@ -97,13 +96,13 @@
         }
         ```
 
-1. **Deployment to Azure App Service**
+6. **Deployment to Azure App Service**
    - Step-by-step deployment guide
      - Create an Azure App Service instance, select the Node.js runtime and configure the App Service to use the Node.js runtime
      - Deploy the application code to the App Service
    - Configuration settings
      - set environment variables in the App Service
-2. **Dashboard Features**
+7. **Dashboard Features**
    - Real-time updates
      - update every 30 seconds as new data is received from the IoT sensors.
    - Charts and visualizations
@@ -111,5 +110,5 @@
    - Safety status indicators
      - show the current safety status for each location (Safe/Unsafe)
      - show a visual indicator (e.g., a red dot for Unsafe, green dot for Safe) for each location.
-3. **Troubleshooting**
+8. **Troubleshooting**
    - If the dashboard is not updating, check if the server is running and the API endpoints are accessible.
