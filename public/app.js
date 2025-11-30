@@ -4,8 +4,7 @@
  */
 
 // Configuration
-// const API_BASE_URL = window.location.origin;
-const API_BASE_URL = 'https://final-project1-h4bsege9anhacmfw.westus3-01.azurewebsites.net/';
+const API_BASE_URL = window.location.origin;
 const REFRESH_INTERVAL = 30000; // 30 seconds
 
 // Global state
