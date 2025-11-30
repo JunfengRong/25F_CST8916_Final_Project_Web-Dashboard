@@ -31,13 +31,13 @@ const container = database.container(process.env.COSMOS_CONTAINER);
  */
 app.get('/api/latest', async (req, res) => {
     try {
-        const locations = ["Dow's Lake", "Fifth Avenue", "NAC"];
+        const locations = ["Dow-Lake", "Fifth-Avenue", "NAC"];
         const results = [];
 
         for (const location of locations) {
             // Query without subquery - get all records for location, sort client-side
             const querySpec = {
-                query: "SELECT * FROM c WHERE c.location = @location",
+                query: "SELECT * FROM c WHERE c.ConnectionDeviceId = @location",
                 parameters: [
                     { name: "@location", value: location }
                 ]
@@ -80,7 +80,7 @@ app.get('/api/history/:location', async (req, res) => {
         const limit = parseInt(req.query.limit) || 12; // Last hour (12 * 5 min)
 
         const querySpec = {
-            query: "SELECT * FROM c WHERE c.location = @location",
+            query: "SELECT * FROM c WHERE c.ConnectionDeviceId = @location",
             parameters: [
                 { name: "@location", value: location }
             ]
@@ -117,13 +117,13 @@ app.get('/api/history/:location', async (req, res) => {
  */
 app.get('/api/status', async (req, res) => {
     try {
-        const locations = ["Dow's Lake", "Fifth Avenue", "NAC"];
+        const locations = ["Dow-Lake", "Fifth-Avenue", "NAC"];
         const statuses = [];
 
         for (const location of locations) {
             // Simple query without subquery
             const querySpec = {
-                query: "SELECT c.location, c.safetyStatus, c.windowEndTime FROM c WHERE c.location = @location",
+                query: "SELECT c.ConnectionDeviceId, c.safetyStatus, c.windowEndTime FROM c WHERE c.ConnectionDeviceId = @location",
                 parameters: [
                     { name: "@location", value: location }
                 ]
