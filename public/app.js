@@ -106,10 +106,10 @@ function updateLastUpdateTime() {
  */
 async function updateCharts() {
     try {
-        const locations = ["Dow's Lake", "Fifth Avenue", "NAC"];
+        const locations = ["Dow-Lake", "Fifth-Avenue", "NAC"];
         const colors = {
-            "Dow's Lake": 'rgb(75, 192, 192)',
-            "Fifth Avenue": 'rgb(255, 99, 132)',
+            "Dow-Lake": 'rgb(75, 192, 192)',
+            "Fifth-Avenue": 'rgb(255, 99, 132)',
             "NAC": 'rgb(54, 162, 235)'
         };
 
@@ -234,8 +234,8 @@ async function updateCharts() {
  */
 function getLocationKey(location) {
     const keyMap = {
-        "Dow's Lake": "dows",
-        "Fifth Avenue": "fifth",
+        "Dow-Lake": "dows",
+        "Fifth-Avenue": "fifth",
         "NAC": "nac"
     };
     return keyMap[location] || location.toLowerCase().replace(/[^a-z]/g, '');
